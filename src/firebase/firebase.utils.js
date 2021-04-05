@@ -57,8 +57,8 @@ export const convertCollectionSnapshotToMap = collections => {
             items,
         };
     });
-    transformedCollections.reducer((accumulator, collection) => {
-        accumulator[collections.title.toLowerCase()] = collection;
+    return transformedCollections.reduce((accumulator, collection) => {
+        accumulator[collection.title.toLowerCase()] = collection;
         return accumulator;
     }, {});
 }
