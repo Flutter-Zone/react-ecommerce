@@ -8,7 +8,7 @@ import {auth, createUserProfileDocument} from './firebase/firebase.utils';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {setCurrentUser} from './redux/user/user.actions';
-import {selectCurrentUser} from './redux/user/user.selectors';
+import {selectCurrentUser} from './redux/user/user.selectors'; 
 import CheckoutPage from './pages/checkout/checkout.component';
 import CollectionPage from './pages/collection/collection.component';
 // css
@@ -33,9 +33,9 @@ class App extends React.Component{
             }
           });
         });
-      }else{
-        setCurrentUser(userAuth);
       }
+        setCurrentUser(userAuth);
+    
     });
   }
 
@@ -64,7 +64,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
