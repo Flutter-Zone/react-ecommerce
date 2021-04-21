@@ -1,22 +1,47 @@
+// import React from 'react';
+
+// import {connect} from 'react-redux';
+// import {createStructuredSelector} from 'reselect';
+// import CollectionPreview from '../collection-preview/collection-preview.component';
+// import {selectShopCollectionsForCollectionPreview} from '../../redux/shop/shop.selectors';
+
+// import './collection-overview.styles.scss';
+
+// const CollectionOverview = ({ collections }) => (
+//     <div className='collections-overview'>
+//         {collections.map(({id, ...otherCollectionProps}) => (
+//             <CollectionPreview key={id} {...otherCollectionProps}/>
+//             ))} 
+//     </div>
+// )
+
+// const mapStateToProps = createStructuredSelector({
+//     collections: selectShopCollectionsForCollectionPreview
+// });
+
+// export default connect(mapStateToProps)(CollectionOverview);
+
+
+
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import {connect} from 'react-redux';
-import {createStructuredSelector} from 'reselect';
 import CollectionPreview from '../collection-preview/collection-preview.component';
-import {selectShopCollectionsForCollectionPreview} from '../../redux/shop/shop.selectors';
 
-import './collection-overview.styles.scss';
+import { selectShopCollectionsForCollectionPreview } from '../../redux/shop/shop.selectors';
+import { CollectionsOverviewContainer } from './collections-overview.styles';
 
-const CollectionOverview = ({ collections }) => (
-    <div className='collections-overview'>
-        {collections.map(({id, ...otherCollectionProps}) => (
-            <CollectionPreview key={id} {...otherCollectionProps}/>
-            ))} 
-    </div>
-)
+const CollectionsOverview = ({ collections }) => (
+  <CollectionsOverviewContainer>
+    {collections.map(({ id, ...otherCollectionProps }) => (
+      <CollectionPreview key={id} {...otherCollectionProps} />
+    ))}
+  </CollectionsOverviewContainer>
+);
 
 const mapStateToProps = createStructuredSelector({
-    collections: selectShopCollectionsForCollectionPreview
+  collections: selectShopCollectionsForCollectionPreview
 });
 
-export default connect(mapStateToProps)(CollectionOverview);
+export default connect(mapStateToProps)(CollectionsOverview);
